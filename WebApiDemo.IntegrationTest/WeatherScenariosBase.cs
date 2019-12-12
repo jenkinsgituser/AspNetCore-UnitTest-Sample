@@ -18,8 +18,9 @@ namespace WebApiDemo.IntegrationTest
               {
                   cb.AddJsonFile("appsettings.json", optional: false)
                   .AddEnvironmentVariables();
-              }).UseStartup<Startup>();
-
+              })
+              //.UseStartup<WeatherTestStartup>();
+              .UseStartup<Startup>();
             var testServer = new TestServer(hostBuilder);
             return testServer;
         }
@@ -28,7 +29,7 @@ namespace WebApiDemo.IntegrationTest
         {
             public static string GetList()
             {
-                return $"weatherforecast";
+                return $"api/v1/weatherforecast";
             }
         }
 

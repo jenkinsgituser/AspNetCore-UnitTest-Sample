@@ -15,13 +15,10 @@ namespace WebApiDemo.FuncTest
         [Fact]
         public async Task Get_List_Return_Ok()
         {
-            using (var server = CreateServer())
-            {
-                var response = await server.CreateClient()
-                    .GetAsync(Get.GetList());
-
-                response.EnsureSuccessStatusCode();
-            }
+            using var server = CreateServer();
+            var client = server.CreateClient();
+            var response = await client.GetAsync(Get.GetList());
+            response.EnsureSuccessStatusCode();
         }
     }
 }
